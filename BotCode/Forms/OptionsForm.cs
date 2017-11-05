@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Bot.Sample.SimpleEchoBot;
-using SimpleEchoBot.Model;
+using SimpleEchoBot.Models;
 
 namespace SimpleEchoBot.Forms
 {

@@ -8,7 +8,7 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Configuration;
 using Microsoft.Bot.Builder.FormFlow;
-using SimpleEchoBot.Model;
+using SimpleEchoBot.Models;
 using SimpleEchoBot.Forms;
 
 namespace SimpleEchoBot.Dialogs

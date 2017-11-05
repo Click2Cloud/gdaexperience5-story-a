@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleEchoBot.Model
+namespace SimpleEchoBot.Models
 {   
     [Serializable]
     public class FlightOptions

@@ -5,7 +5,7 @@ using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Dialogs;
 using System.Net.Http;
 using Newtonsoft.Json;
-using SimpleEchoBot.Model;
+using SimpleEchoBot.Models;
 using System.Configuration;
 using Microsoft.Bot.Builder.FormFlow;
 using System.Text;

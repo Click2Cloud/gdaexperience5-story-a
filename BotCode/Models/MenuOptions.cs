@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SimpleEchoBot.Model
+namespace SimpleEchoBot.Models
 {
     [Serializable]
     public class MenuOptions

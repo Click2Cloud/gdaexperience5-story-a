@@ -8,7 +8,7 @@ namespace ContosoAir.Clients
         public const string AuthenticationTokenEndpoint = "https://api.cognitive.microsoft.com/sts/v1.0";
         public const string SpeechRecognitionEndpoint = "https://speech.platform.bing.com/recognize";
 
-        public const string SkypeBotAccount = "28:114eaf90-29cf-4095-90ab-bc42dfdaa773";
+        public const string SkypeBotAccount = "28:XXXXXXXXXX";
         public const string CognitiveServicesKey = "8475871faed346eda4abc75ae27dd88d"; //8475871faed346eda4abc75ae27dd88d
         public const string BingSpeechApiKey = "e4d4520cc2d1442d89debbbb1d9909e0";//e4d4520cc2d1442d89debbbb1d9909e0
         public const string AudioContentType = @"audio/wav; codec=""audio/pcm""; samplerate=16000";
