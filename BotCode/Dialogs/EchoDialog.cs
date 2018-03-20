@@ -11,33 +11,35 @@ using Microsoft.Bot.Builder.FormFlow;
 using System.Text;
 using System.Threading;
 using SimpleEchoBot.Forms;
+using SimpleEchoBot;
+using SimpleEchoBot.Dialogs;
 
-namespace SimpleEchoBot.Dialogs
+namespace Microsoft.Bot.Sample.SimpleEchoBot
 {
     [Serializable]
     public class EchoDialog : IDialog<OptionsForm>
     {
 
-        public string PNRCode = null;     
+        public string PNRCode = null;
 
         public async Task StartAsync(IDialogContext context)
         {
-           await this.MenuOptions(context);
+            await this.MenuOptions(context);
         }
         //Function to Display Option Menu
         private async Task MenuOptions(IDialogContext context)
         {
             var message = context.MakeMessage();
-            var name = message.Recipient != null ? message.Recipient.Name : "";           
+            var name = message.Recipient != null ? message.Recipient.Name : "";
             await context.PostAsync(String.Format(Locale.Greet, name));
 
-            var attachments = new List<Attachment>();      
+            var attachments = new List<Attachment>();
             MenuOptions MenuOption = new MenuOptions();
-            
+
             MenuOption.Options.Add(new Options(1, "E-Checkin"));
             MenuOption.Options.Add(new Options(2, "Terminal Map"));
             MenuOption.Options.Add(new Options(3, "Flight Resechedule"));
-                  
+            
             foreach (Options optionsdata in MenuOption.Options)
             {
                 List<CardImage> cardImages = new List<CardImage>();
@@ -49,7 +51,7 @@ namespace SimpleEchoBot.Dialogs
 
                 HeroCard plCard = new HeroCard()
                 {
-                    Title = optionsdata.Title,                     
+                    Title = optionsdata.Title,
                     Text = Constants.Choose,
                     Buttons = cardButtons
                 };
@@ -72,16 +74,15 @@ namespace SimpleEchoBot.Dialogs
             var messagedata = await result;
             int number = Convert.ToInt32(messagedata.Menu);
             await context.PostAsync(Locale.AskQuestion);
-            
+
             if (number == 1)
                 context.Wait(ConfirmECheckin);
             else if (number == 2)
                 context.Wait(ShowMapOption);
             else if (number == 3)
                 context.Wait(FlightReschedule);
-
         }
-
+        
         //Function to call Another Dialog for Flight Reschedule
         public async Task FlightReschedule(IDialogContext context, IAwaitable<IMessageActivity> argument)
         {
@@ -146,7 +147,7 @@ namespace SimpleEchoBot.Dialogs
 
             context.Wait(OnComplete);
         }
-       
+
         //Function to call Confirm E-Checkin
         public async Task ConfirmECheckin(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
@@ -183,10 +184,10 @@ namespace SimpleEchoBot.Dialogs
                     if (flightOptions != null)
                     {
                         if (flightOptions.Flag)
-                            await context.PostAsync(Locale.NewECheckin+" "+ Locale.ShowBoarding);
+                            await context.PostAsync(Locale.NewECheckin + " " + Locale.ShowBoarding);
                         else
                             await context.PostAsync(Locale.OldECheckin + " " + Locale.ShowBoarding);
-                                                
+
                         var image64 = Convert.ToBase64String(flightOptions.BoardingPass, Base64FormattingOptions.InsertLineBreaks);
                         var attachment = new Attachment();
                         attachment = new Attachment()
